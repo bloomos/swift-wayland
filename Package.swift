@@ -11,6 +11,12 @@ let package = Package(
     ],
     targets: [
         .systemLibrary(name: "Cwayland"),
-        .target(name: "SwiftWayland", dependencies: ["Cwayland"]),
+        .target(
+            name: "SwiftWayland",
+            dependencies: ["Cwayland"],
+            swiftSettings: [
+                .unsafeFlags(["-Xfrontend", "-validate-tbd-against-ir=none"]),
+            ]
+        ),
     ]
 )
